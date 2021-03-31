@@ -1,14 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
+import getData from './getData'
 
 function App() {
+  const users = getData('https://jsonplaceholder.typicode.com/users',[])
+  const posts = getData('https://jsonplaceholder.typicode.com/posts',[])
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h2>Users</h2>
+        <ul>
+          {users.data.map( user => (
+            <li key={user.id}>{user.name}</li>
+          ))}
+        </ul>
+
+        <h2>Posts</h2>
+        <ul>
+          {posts.data.map( posts =>(
+            <li key={posts.id}>posts.title</li>
+          )
+
+          )}
+        </ul>
+
+        
         <a
           className="App-link"
           href="https://reactjs.org"
